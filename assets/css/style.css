@@ -1,7 +1,9 @@
 body {
     background: black;
+    color:white;
 }
 
 #gameDiv {
     border: 10px red solid;
+    /* transition: all 5s; */
 }
