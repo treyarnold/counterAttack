@@ -13,16 +13,17 @@
 
 <body>
     <div class="vw-100 vh-100" id="gameDiv">
-        <!-- <div class="row h-100 w-25"></div> -->
         <div class="row w-100 h-100 flex-column justify-content-around">
             <div class="row justify-content-around">
                 <div class="col-3">
                     <div class="row">
                         <div class="col-6">
-                            <img class="img-responsive" src="./assets/images/engineer.png">
+                            <img class="img-responsive" id="engineer" src="./assets/images/engineer.png">
                         </div>
                         <div class="col-6">
                             <div class="d-flex flex-column align-items-start">
+                                <span>Engineer</span>
+                                <br>
                                 <span>Hit Points</span>
                                 <span>100</span>
                                 <span>Attack</span>
@@ -36,10 +37,12 @@
                 <div class="col-3">
                     <div class="row">
                         <div class="col-6">
-                            <img class="img-responsive" src="./assets/images/thief.png">
+                            <img class="img-responsive" id="thief" src="./assets/images/thief.png">
                         </div>
                         <div class="col-6">
                             <div class="d-flex flex-column align-items-start">
+                                <span>Thief</span>
+                                <br>
                                 <span>Hit Points</span>
                                 <span>100</span>
                                 <span>Attack</span>
@@ -59,10 +62,12 @@
                 <div class="col-3">
                     <div class="row">
                         <div class="col-6">
-                            <img class="img-responsive" src="./assets/images/outlaw.png">
+                            <img class="img-responsive" id="outlaw" src="./assets/images/outlaw.png">
                         </div>
                         <div class="col-6">
                             <div class="d-flex flex-column align-items-start">
+                                <span>Outlaw</span>
+                                <br>
                                 <span>Hit Points</span>
                                 <span>100</span>
                                 <span>Attack</span>
@@ -76,10 +81,12 @@
                 <div class="col-3">
                     <div class="row">
                         <div class="col-6">
-                            <img class="img-responsive" src="./assets/images/scout.png">
+                            <img class="img-responsive" id="scout" src="./assets/images/scout.png">
                         </div>
                         <div class="col-6">
                             <div class="d-flex flex-column align-items-start">
+                                <span>Scout</span>
+                                <br>
                                 <span>Hit Points</span>
                                 <span>100</span>
                                 <span>Attack</span>
@@ -95,10 +102,38 @@
 
     </div>
 
+    <div class="vw-100 vh-100" id="combatDiv">
+        <div class="row w-100 h-100">
+            <div class="col-8 h-100 " id="currentBattleDiv">
+                <h1>combat</h1>
+                <div class="row m-3">
+                    <img src="" id="player">    
+                    <div class="ml-3" id="playerStats"></div>            
+                </div>
+            </div>
+            <div class="col-3 h-100 flex-column justify-content-around">
+                <h1>opponents</h1>
+                <div class="row">
+                    <img src="" id="opponent1">
+                    <div class="ml-3" id="opponent1Stats"></div>
+                </div>
+                <div class="row">
+                    <img src="" id="opponent2">
+                    <div class="ml-3" id="opponent2Stats"></div>
+                </div>
+                <div class="row">
+                    <img src="" id="opponent3">
+                    <div class="ml-3" id="opponent3Stats"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <script
-  src="http://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+        src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>

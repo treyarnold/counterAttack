@@ -7,3 +7,16 @@ body {
     border: 10px red solid;
     /* transition: all 5s; */
 }
+
+#combatDiv {
+    border: 10px red solid;
+    display: none;
+}
+
+.border {
+    border: 10px red solid;
+}
+
+#currentBattleDiv {
+    border-right: 10px red solid;
+}
