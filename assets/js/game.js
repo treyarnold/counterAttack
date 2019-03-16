@@ -6,6 +6,7 @@ let currentPlayer;
 let currentOpponent;
 const characters = {
     outlaw: {
+        name: "Outlaw",
         baseHP: 100,
         hp: 100,
         baseAttack: 8,
@@ -14,18 +15,9 @@ const characters = {
         img: "./assets/images/outlaw.png",
         currentPlayer: false,
         dead: false, 
-        stats: `<div class="d-flex flex-column align-items-start">
-                    <span>Outlaw</span>
-                    <br>
-                    <span>Hit Points</span>
-                    <span>100</span>
-                    <span>Attack</span>
-                    <span>8</span>
-                    <span>Counter-Attack</span>
-                    <span>15</span>
-                </div>`
     },
     engineer: {
+        name: "Engineer",
         baseHP: 100,
         hp: 100,
         baseAttack: 8,
@@ -34,18 +26,9 @@ const characters = {
         img: "./assets/images/engineer.png",
         currentPlayer: false,
         dead: false,
-        stats: `<div class="d-flex flex-column align-items-start">
-                    <span>Engineer</span>
-                    <br>
-                    <span>Hit Points</span>
-                    <span>100</span>
-                    <span>Attack</span>
-                    <span>8</span>
-                    <span>Counter-Attack</span>
-                    <span>15</span>
-                </div>`
     },
     scout: {
+        name: "Scout",
         baseHP: 100,
         hp: 100,
         baseAttack: 8,
@@ -54,18 +37,9 @@ const characters = {
         img: "./assets/images/scout.png",
         currentPlayer: false,
         dead: false,
-        stats: `<div class="d-flex flex-column align-items-start">
-                    <span>Scout</span>
-                    <br>
-                    <span>Hit Points</span>
-                    <span>100</span>
-                    <span>Attack</span>
-                    <span>8</span>
-                    <span>Counter-Attack</span>
-                    <span>15</span>
-                </div>`
     },
     thief: {
+        name: "Thief",
         baseHP: 100,
         hp: 100,
         baseAttack: 8,
@@ -74,17 +48,18 @@ const characters = {
         img: "./assets/images/thief.png",
         currentPlayer: false,
         dead: false,
-        stats: `<div class="d-flex flex-column align-items-start">
-                    <span>Thief</span>
-                    <br>
-                    <span>Hit Points</span>
-                    <span>100</span>
-                    <span>Attack</span>
-                    <span>8</span>
-                    <span>Counter-Attack</span>
-                    <span>15</span>
-                </div>`
     },
+}
+
+const game = {
+    setStats: function (id, character) {
+        console.log(id);
+        console.log(character.name);
+        $(id).text(character.name);
+        $(id + "HP").text(character.hp);
+        $(id + "ATK").text(character.attack);
+        $(id + "CounterATK").text(character.counter);
+    }
 }
 
 $("img").on("click", function (event) {
@@ -94,11 +69,11 @@ $("img").on("click", function (event) {
     $.each(characters, function(key, value){
         if (key === choice) {
             currentPlayer = this;
-            $("#player").attr("src", this.img);
-            $("#playerStats").html(this.stats);
+            $("#playerIMG").attr("src", this.img);
+            game.setStats("#player", this);
         } else {
-            $("#opponent" + opponentCount).attr("src", this.img);
-            $("#opponent" + opponentCount + "Stats").html(this.stats);
+            $("#opponent" + opponentCount + "IMG").attr("src", this.img);
+            game.setStats("#opponent" + opponentCount, this);
             opponentCount++;
         }
     })
