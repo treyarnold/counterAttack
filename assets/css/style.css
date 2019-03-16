@@ -20,3 +20,11 @@ body {
 #currentBattleDiv {
     border-right: 10px red solid;
 }
+
+#wins {
+    color: green;
+}
+
+#losses {
+    color: red;
+}
