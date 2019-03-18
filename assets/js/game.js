@@ -102,3 +102,13 @@ $(".opponents").on("click", (event) => {
         })
     }
 });
+
+$("#attack").on("click", () => {
+    if (!($("#currentOpponentIMG").attr("src") === "")) {
+        currentOpponent.hp -= currentPlayer.attack;
+        currentPlayer.hp -= currentOpponent.counter;
+        currentPlayer.attack += currentPlayer.baseAttack;
+        game.setStats ("#player", currentPlayer);
+        game.setStats ("#currentOpponent", currentOpponent);
+    }
+})
