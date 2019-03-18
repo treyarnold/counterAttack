@@ -13,7 +13,7 @@ const characters = {
         attack: 8,
         counter: 15,
         img: "./assets/images/outlaw.png",
-        currentPlayer: false,
+        oldID: "",
         dead: false, 
     },
     engineer: {
@@ -24,7 +24,7 @@ const characters = {
         attack: 8,
         counter: 15,
         img: "./assets/images/engineer.png",
-        currentPlayer: false,
+        oldID: "",
         dead: false,
     },
     scout: {
@@ -35,7 +35,7 @@ const characters = {
         attack: 8,
         counter: 15,
         img: "./assets/images/scout.png",
-        currentPlayer: false,
+        oldID: "",
         dead: false,
     },
     thief: {
@@ -46,15 +46,13 @@ const characters = {
         attack: 8,
         counter: 15,
         img: "./assets/images/thief.png",
-        currentPlayer: false,
+        oldID: "",
         dead: false,
     },
 }
 
 const game = {
     setStats: function (id, character) {
-        console.log(id);
-        console.log(character.name);
         $(id).text(character.name);
         $(id + "HP").text(character.hp);
         $(id + "ATK").text(character.attack);
@@ -62,22 +60,45 @@ const game = {
     }
 }
 
-$("img").on("click", function (event) {
+$(".playerChoice").on("click", (event) => {
     let choice = event.target.id;
     console.log(choice);
     let opponentCount = 1;
-    $.each(characters, function(key, value){
+    $.each(characters, function (key) {
         if (key === choice) {
             currentPlayer = this;
+            console.log(this);
             $("#playerIMG").attr("src", this.img);
             game.setStats("#player", this);
+            $("#playerIMG").attr("id", key);
+            this.oldID = "#player";
         } else {
-            $("#opponent" + opponentCount + "IMG").attr("src", this.img);
-            game.setStats("#opponent" + opponentCount, this);
+            this.oldID = "#opponent" + opponentCount;
+            console.log(this);
+            
+            $(this.oldID + "IMG").attr("src", this.img);
+            game.setStats(this.oldID, this);
+            $(this.oldID + "IMG").attr("id", key);
             opponentCount++;
         }
     })
     gameDiv.fadeOut("slow", function() {
         combatDiv.fadeIn("slow");
     });
+});
+
+$(".opponents").on("click", (event) => {
+    if ($("#currentOpponentIMG").attr("src") === "") {
+        console.log(event);
+        let choice = event.target.id;
+        $.each(characters, function (key) {
+            if (key === choice) {
+                currentOpponent = this;
+                $("#currentOpponentIMG").attr("src", this.img),
+                game.setStats("#currentOpponent", this);
+                $(".currentOpponent").css("display", "flex");
+                $(".currentOpponent").fadeIn("slow");
+            }
+        })
+    }
 });

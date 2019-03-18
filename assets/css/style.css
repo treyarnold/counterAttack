@@ -28,3 +28,7 @@ body {
 #losses {
     color: red;
 }
+
+.currentOpponent {
+    display: none;
+}

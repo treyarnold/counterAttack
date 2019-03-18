@@ -18,10 +18,10 @@
                 <div class="col-3">
                     <div class="row">
                         <div class="col-6">
-                            <img class="img-responsive" id="engineer" src="./assets/images/engineer.png">
+                            <img class="playerChoice img-responsive" id="engineer" src="./assets/images/engineer.png">
                         </div>
                         <div class="col-6">
-                            <div class="d-flex flex-column align-items-start">
+                            <div class="d-flex flex-column align-items-start m-3">
                                 <span>Engineer</span>
                                 <br>
                                 <span>Hit Points</span>
@@ -37,10 +37,10 @@
                 <div class="col-3">
                     <div class="row">
                         <div class="col-6">
-                            <img class="img-responsive" id="thief" src="./assets/images/thief.png">
+                            <img class="playerChoice img-responsive" id="thief" src="./assets/images/thief.png">
                         </div>
                         <div class="col-6">
-                            <div class="d-flex flex-column align-items-start">
+                            <div class="d-flex flex-column align-items-start m-3">
                                 <span>Thief</span>
                                 <br>
                                 <span>Hit Points</span>
@@ -62,10 +62,10 @@
                 <div class="col-3">
                     <div class="row">
                         <div class="col-6">
-                            <img class="img-responsive" id="outlaw" src="./assets/images/outlaw.png">
+                            <img class="playerChoice img-responsive" id="outlaw" src="./assets/images/outlaw.png">
                         </div>
                         <div class="col-6">
-                            <div class="d-flex flex-column align-items-start">
+                            <div class="d-flex flex-column align-items-start m-3">
                                 <span>Outlaw</span>
                                 <br>
                                 <span>Hit Points</span>
@@ -81,10 +81,10 @@
                 <div class="col-3">
                     <div class="row">
                         <div class="col-6">
-                            <img class="img-responsive" id="scout" src="./assets/images/scout.png">
+                            <img class="playerChoice img-responsive" id="scout" src="./assets/images/scout.png">
                         </div>
                         <div class="col-6">
-                            <div class="d-flex flex-column align-items-start">
+                            <div class="d-flex flex-column align-items-start m-3">
                                 <span>Scout</span>
                                 <br>
                                 <span>Hit Points</span>
@@ -106,7 +106,7 @@
         <div class="row w-100 h-100">
             <div class="col-8 h-100 " id="currentBattleDiv">
                 <h1>combat</h1>
-                <div class="row m-3">
+                <div class="row m-3 px-5">
                     <img src="" id="playerIMG">    
                     <div class="d-flex flex-column align-items-start m-3">
                         <span id="player"></span>
@@ -118,12 +118,26 @@
                         <span>Counter-Attack</span>
                         <span id="playerCounterATK"></span>
                     </div>
+                    <button class="btn btn-danger ml-auto align-self-center btn-lg" id="attack">Attack</button>
+                </div>
+                <div class="row m-3 px-5 justify-content-end currentOpponent">
+                    <img src="" id="currentOpponentIMG">    
+                    <div class="d-flex flex-column align-items-start m-3">
+                        <span id="currentOpponent"></span>
+                        <br>
+                        <span>Hit Points</span>
+                        <span id=currentOpponentHP></span>
+                        <span>Attack</span>
+                        <span id=currentOpponentATK></span>
+                        <span>Counter-Attack</span>
+                        <span id="currentOpponentCounterATK"></span>
+                    </div>
                 </div>
             </div>
-            <div class="col-3 h-100 d-flex flex-column justify-content-around">
+            <div class="col-4 h-100 d-flex flex-column justify-content-around">
                 <h1 class="text-center text-warning">Opponents</h1>
                 <div class="row justify-content-center">
-                    <img src="" id="opponent1IMG">
+                    <img class="opponents" src="" id="opponent1IMG">
                     <div class="d-flex flex-column align-items-start m-3">
                         <span id="opponent1"></span>
                         <br>
@@ -136,7 +150,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <img src="" id="opponent2IMG">
+                    <img class="opponents" src="" id="opponent2IMG">
                     <div class="d-flex flex-column align-items-start m-3">
                         <span id="opponent2"></span>
                         <br>
@@ -149,7 +163,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <img src="" id="opponent3IMG">
+                    <img class="opponents" src="" id="opponent3IMG">
                     <div class="d-flex flex-column align-items-start m-3">
                         <span id="opponent3"></span>
                         <br>
@@ -170,7 +184,7 @@
                     <span id="losses">0</span>
                 </div>
                 <div class="row justify-content-center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Instructions</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">Instructions</button>
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -181,7 +195,8 @@
                                         </button>
                                     </div>
                                     <div class="modal-body bg-dark">
-                                        <p>You must survive each of your opponents.  You will get no extra health than you have now.</p>
+                                        <p>Click on an opponent to choose who you will fight next.</p>
+                                        <p>You must survive all of your opponents.  You will get no extra health than you have now.</p>
                                         <p>Each time you attack, your attack will increase by the base attack you start with.</p>
                                         <p>Your opponents' counter attack will not change</p>
                                         <p>Good Luck!</p>
