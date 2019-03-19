@@ -98,13 +98,15 @@ const game = {
             $(id).attr("id", this.oldID + "IMG");
             console.log(this);
         });
+        currentOpponent = null;
+        currentPlayer = null;
         game.idSwitchBack();
         $("#playAgain").on("click", () => {
             combatDiv.fadeOut("slow", () => {
                 gameDiv.fadeIn("slow");
                 $("#playAgain").addClass("hidden");
                 $(".currentOpponent").addClass("hidden");
-                $(".currentOpponent").attr("src", "");
+                $("#currentOpponentIMG").attr("src", "");
                 $("#endGame").text("");
                 // $.each($(".opponents"), function (index, value){
                 //     $(this).attr("src", "");
@@ -178,13 +180,13 @@ $("#attack").on("click", () => {
         if (currentPlayer.hp < 0) {
             currentPlayer.hp = 0;
         }
+        game.setStats ("#player", currentPlayer);
+        game.setStats ("#currentOpponent", currentOpponent);
+        game.setStats (currentOpponent.oldID, currentOpponent);
         if (currentPlayer.hp === 0) {
             game.loser();
         } else if (currentOpponent.hp === 0) {
             game.defeated();
         }
-        game.setStats ("#player", currentPlayer);
-        game.setStats ("#currentOpponent", currentOpponent);
-        game.setStats (currentOpponent.oldID, currentOpponent);
     }
 })
