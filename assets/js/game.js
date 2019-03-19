@@ -63,12 +63,15 @@ const game = {
         $("#endGame").css("color", "red");
         $("#endGame").text("Death Becomes You");
         losses++;  
+        let id = "#" + currentPlayer.name.toLowerCase();
+        $(id).addClass("dead");
         game.endGame();      
     },
     
     defeated: function(){
         $(".currentOpponent").css("display", "none");
         $("#currentOpponentIMG").attr("src", "");
+        $("#" + currentOpponent.name.toLowerCase()).addClass("dead");
         currentPlayer.opponentsKilled++;
         if (currentPlayer.opponentsKilled === 3) {
             game.winner();
@@ -81,20 +84,20 @@ const game = {
         wins++;
         game.endGame();
     },
-
+    
     endGame: function () {
         $("#wins").text(wins);
         $("#losses").text(losses);
         game.reset();
     },
-
+    
     reset: function () {
         $("#playAgain").removeClass("hidden");
         $.each(characters, function (key) {
             this.hp = this.baseHP;
             this.attack = this.baseAttack;
             this.opponentsKilled = 0;
-            let id = "#" + this.name.toLowerCase();            
+            let id = "#" + this.name.toLowerCase(); 
             $(id).attr("id", this.oldID + "IMG");
         });
         currentOpponent = null;
@@ -103,6 +106,11 @@ const game = {
         $("#playAgain").on("click", () => {
             combatDiv.fadeOut("slow", () => {
                 gameDiv.fadeIn("slow");
+                let id = "#opponent";
+                for (let i = 1; i <= 3; i++) {
+                    $(id + i + "IMG").removeClass("dead");
+                }
+                $("#playerIMG").removeClass("dead");
                 $("#playAgain").addClass("hidden");
                 $(".currentOpponent").addClass("hidden");
                 $("#currentOpponentIMG").attr("src", "");
