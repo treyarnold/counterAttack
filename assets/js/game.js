@@ -18,7 +18,7 @@ const characters = {
     },
     engineer: {
         name: "Engineer",
-        baseHP: 100,
+        baseHP: 200,
         hp: 200,
         baseAttack: 8,
         attack: 8,
@@ -89,16 +89,46 @@ const game = {
     },
 
     reset: function () {
-        $("body").on("click", () => {
+        $("#playAgain").removeClass("hidden");
+        $.each(characters, function (key) {
+            this.hp = this.baseHP;
+            this.attack = this.baseAttack;
+            this.opponentsKilled = 0;
+            let id = "#" + this.name.toLowerCase();            
+            $(id).attr("id", this.oldID + "IMG");
+            console.log(this);
+        });
+        game.idSwitchBack();
+        $("#playAgain").on("click", () => {
             combatDiv.fadeOut("slow", () => {
-                $("body").off("click");
                 gameDiv.fadeIn("slow");
+                $("#playAgain").addClass("hidden");
+                $(".currentOpponent").addClass("hidden");
+                $(".currentOpponent").attr("src", "");
+                $("#endGame").text("");
+                // $.each($(".opponents"), function (index, value){
+                //     $(this).attr("src", "");
+                // })
             })
-        })
+        });
     },
+
+    idSwitch: function () {
+        $("#engineer").attr("id", "character1");
+        $("#thief").attr("id", "character2");
+        $("#outlaw").attr("id", "character3");
+        $("#scout").attr("id", "character4");
+    }, 
+
+    idSwitchBack: function () {
+        $("#character1").attr("id", "engineer");
+        $("#character2").attr("id", "thief");
+        $("#character3").attr("id", "outlaw");
+        $("#character4").attr("id", "scout");
+    }, 
 }    
 
-$(".playerChoice").on("click", (event) => {
+$(".playerChoice").on("click", function (event) {
     let choice = event.target.id;
     let opponentCount = 1;
     $.each(characters, function (key) {
@@ -116,6 +146,7 @@ $(".playerChoice").on("click", (event) => {
             opponentCount++;
         }
     })
+    game.idSwitch();
     gameDiv.fadeOut("slow", function() {
         combatDiv.fadeIn("slow");
     });
@@ -127,9 +158,9 @@ $(".opponents").on("click", (event) => {
         $.each(characters, function (key) {
             if ((key === choice) && (this.hp != 0)) {
                 currentOpponent = this;
+                $(".currentOpponent").removeClass("hidden");
                 $("#currentOpponentIMG").attr("src", this.img),
                 game.setStats("#currentOpponent", this);
-                $(".currentOpponent").css("display", "flex");
                 $(".currentOpponent").fadeIn("slow");
             }
         })

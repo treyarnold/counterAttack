@@ -29,6 +29,6 @@ body {
     color: red;
 }
 
-.currentOpponent {
+.hidden {
     display: none;
 }
