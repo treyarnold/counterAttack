@@ -137,12 +137,12 @@ $(".playerChoice").on("click", function (event) {
             $("#playerIMG").attr("src", this.img);
             game.setStats("#player", this);
             $("#playerIMG").attr("id", key);
-            this.oldID = "#player";
+            this.oldID = "player";
         } else {
-            this.oldID = "#opponent" + opponentCount;
-            $(this.oldID + "IMG").attr("src", this.img);
-            game.setStats(this.oldID, this);
-            $(this.oldID + "IMG").attr("id", key);
+            this.oldID = "opponent" + opponentCount;
+            $("#" + this.oldID + "IMG").attr("src", this.img);
+            game.setStats("#" + this.oldID, this);
+            $("#" + this.oldID + "IMG").attr("id", key);
             opponentCount++;
         }
     })
