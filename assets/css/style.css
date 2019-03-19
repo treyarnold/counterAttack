@@ -32,3 +32,7 @@ body {
 .hidden {
     display: none;
 }
+
+.amarante {
+    font-family: 'Amarante', cursive;
+}

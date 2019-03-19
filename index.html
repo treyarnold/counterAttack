@@ -8,7 +8,9 @@
     <title>Counter Attack</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Amarante" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -22,14 +24,14 @@
                         </div>
                         <div class="col-6">
                             <div class="d-flex flex-column align-items-start m-3">
-                                <span>Engineer</span>
+                                <span id="characterChoice1">Engineer</span>
                                 <br>
                                 <span>Hit Points</span>
-                                <span>100</span>
+                                <span id="characterChoice1HP">100</span>
                                 <span>Attack</span>
-                                <span>8</span>
+                                <span id="characterChoice1ATK">8</span>
                                 <span>Counter-Attack</span>
-                                <span>15</span>
+                                <span id="characterChoice1CounterATK">15</span>
                             </div>
                         </div>
                     </div>
@@ -41,14 +43,14 @@
                         </div>
                         <div class="col-6">
                             <div class="d-flex flex-column align-items-start m-3">
-                                <span>Thief</span>
+                                <span id="characterChoice2">Thief</span>
                                 <br>
                                 <span>Hit Points</span>
-                                <span>100</span>
+                                <span id="characterChoice2HP">100</span>
                                 <span>Attack</span>
-                                <span>8</span>
+                                <span id="characterChoice2ATK">8</span>
                                 <span>Counter-Attack</span>
-                                <span>15</span>
+                                <span id="characterChoice2CounterATK">15</span>
                             </div>
                         </div>
                     </div>
@@ -66,14 +68,14 @@
                         </div>
                         <div class="col-6">
                             <div class="d-flex flex-column align-items-start m-3">
-                                <span>Outlaw</span>
+                                <span id="characterChoice3">Outlaw</span>
                                 <br>
                                 <span>Hit Points</span>
-                                <span>100</span>
+                                <span id="characterChoice3HP">100</span>
                                 <span>Attack</span>
-                                <span>8</span>
+                                <span id="characterChoice3ATK">8</span>
                                 <span>Counter-Attack</span>
-                                <span>15</span>
+                                <span id="characterChoice3CounterATK">15</span>
                             </div>
                         </div>
                     </div>
@@ -85,14 +87,14 @@
                         </div>
                         <div class="col-6">
                             <div class="d-flex flex-column align-items-start m-3">
-                                <span>Scout</span>
+                                <span id="characterChoice4">Scout</span>
                                 <br>
                                 <span>Hit Points</span>
-                                <span>100</span>
+                                <span id="characterChoice4HP">100</span>
                                 <span>Attack</span>
-                                <span>8</span>
+                                <span id="characterChoice4ATK">8</span>
                                 <span>Counter-Attack</span>
-                                <span>15</span>
+                                <span id="characterChoice4CounterATK">15</span>
                             </div>
                         </div>
                     </div>
@@ -105,7 +107,32 @@
     <div class="vw-100 vh-100" id="combatDiv">
         <div class="row w-100 h-100">
             <div class="col-8 h-100 " id="currentBattleDiv">
-                <h1>combat</h1>
+                <h1 class="text-center text-warning m-2 amarante">Counter-Attack</h1>
+                <div class="row m-4 pl-5">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">Instructions</button>
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header bg-dark">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Instructions</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body bg-dark">
+                                    <p>Click on an opponent to choose who you will fight next.</p>
+                                    <p>You must survive all of your opponents to win.  You will get no extra health than you have now.</p>
+                                    <p>Each time you attack, your attack will increase by the base attack you start with.</p>
+                                    <p>Your opponents' counter attack will not change</p>
+                                    <p>Good Luck!</p>
+                                </div>
+                                <div class="modal-footer bg-dark">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row m-3 px-5">
                     <img src="" id="playerIMG">    
                     <div class="d-flex flex-column align-items-start m-3">
@@ -141,7 +168,7 @@
                 </div>
             </div>
             <div class="col-4 h-100 d-flex flex-column justify-content-around">
-                <h1 class="text-center text-warning">Opponents</h1>
+                <h1 class="text-center text-warning amarante">Opponents</h1>
                 <div class="row justify-content-center">
                     <img class="opponents" src="" id="opponent1IMG">
                     <div class="d-flex flex-column align-items-start m-3">
@@ -188,31 +215,6 @@
                 <div class="row justify-content-around">
                     <span id="wins">0</span>
                     <span id="losses">0</span>
-                </div>
-                <div class="row justify-content-center">
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">Instructions</button>
-                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-dark">
-                                        <h5 class="modal-title" id="exampleModalCenterTitle">Instructions</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body bg-dark">
-                                        <p>Click on an opponent to choose who you will fight next.</p>
-                                        <p>You must survive all of your opponents.  You will get no extra health than you have now.</p>
-                                        <p>Each time you attack, your attack will increase by the base attack you start with.</p>
-                                        <p>Your opponents' counter attack will not change</p>
-                                        <p>Good Luck!</p>
-                                    </div>
-                                    <div class="modal-footer bg-dark">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                 </div>
             </div>
 

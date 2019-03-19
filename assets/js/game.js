@@ -9,31 +9,31 @@ const characters = {
         name: "Outlaw",
         baseHP: 100,
         hp: 100,
-        baseAttack: 8,
-        attack: 8,
-        counter: 15,
+        baseAttack: 13,
+        attack: 13,
+        counter: 10,
         img: "./assets/images/outlaw.png",
         oldID: "",
         opponentsKilled: 0,
     },
     engineer: {
         name: "Engineer",
-        baseHP: 200,
-        hp: 200,
+        baseHP: 110,
+        hp: 110,
         baseAttack: 8,
         attack: 8,
-        counter: 15,
+        counter: 12,
         img: "./assets/images/engineer.png",
         oldID: "",
         opponentsKilled: 0,
     },
     scout: {
         name: "Scout",
-        baseHP: 100,
-        hp: 100,
-        baseAttack: 8,
-        attack: 8,
-        counter: 15,
+        baseHP: 95,
+        hp: 95,
+        baseAttack: 14,
+        attack: 14,
+        counter: 10,
         img: "./assets/images/scout.png",
         oldID: "",
         opponentsKilled: 0,
@@ -42,8 +42,8 @@ const characters = {
         name: "Thief",
         baseHP: 100,
         hp: 100,
-        baseAttack: 8,
-        attack: 8,
+        baseAttack: 9,
+        attack: 9,
         counter: 15,
         img: "./assets/images/thief.png",
         oldID: "",
@@ -96,7 +96,6 @@ const game = {
             this.opponentsKilled = 0;
             let id = "#" + this.name.toLowerCase();            
             $(id).attr("id", this.oldID + "IMG");
-            console.log(this);
         });
         currentOpponent = null;
         currentPlayer = null;
@@ -108,9 +107,6 @@ const game = {
                 $(".currentOpponent").addClass("hidden");
                 $("#currentOpponentIMG").attr("src", "");
                 $("#endGame").text("");
-                // $.each($(".opponents"), function (index, value){
-                //     $(this).attr("src", "");
-                // })
             })
         });
     },
@@ -129,6 +125,11 @@ const game = {
         $("#character4").attr("id", "scout");
     }, 
 }    
+
+game.setStats("#characterChoice1", characters.engineer);
+game.setStats("#characterChoice2", characters.thief);
+game.setStats("#characterChoice3", characters.outlaw);
+game.setStats("#characterChoice4", characters.scout);
 
 $(".playerChoice").on("click", function (event) {
     let choice = event.target.id;
@@ -170,7 +171,7 @@ $(".opponents").on("click", (event) => {
 });
 
 $("#attack").on("click", () => {
-    if (!($("#currentOpponentIMG").attr("src") === "")) {
+    if (!($("#currentOpponentIMG").attr("src") === "")  && (!(currentOpponent === null))) {
         currentOpponent.hp -= currentPlayer.attack;
         currentPlayer.hp -= currentOpponent.counter;
         currentPlayer.attack += currentPlayer.baseAttack;
@@ -182,7 +183,7 @@ $("#attack").on("click", () => {
         }
         game.setStats ("#player", currentPlayer);
         game.setStats ("#currentOpponent", currentOpponent);
-        game.setStats (currentOpponent.oldID, currentOpponent);
+        game.setStats ("#" + currentOpponent.oldID, currentOpponent);
         if (currentPlayer.hp === 0) {
             game.loser();
         } else if (currentOpponent.hp === 0) {
