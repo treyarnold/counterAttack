@@ -1,0 +1,24 @@
+{
+  "name": "counterattack",
+  "version": "1.0.0",
+  "description": "A strategy game based on surviving the counter attacks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/treyarnold/counterAttack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/treyarnold/counterAttack/issues"
+  },
+  "homepage": "https://github.com/treyarnold/counterAttack#readme",
+  "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
+}
